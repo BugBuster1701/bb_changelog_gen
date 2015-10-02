@@ -52,64 +52,13 @@ class GithubChangelogGenerator
 
         $label    = $label ? $label : "Changelog";  
         $savePath = !$savePath ? getcwd() . '/' . $this->fileName : null;
-
-        $ClosedMilestoneInfos = $this->collectMilestonesClosed($user, $repository);
+        
         $OpenMilestoneInfos   = $this->collectMilestonesOpen($user, $repository);
-        /*
-        Array
-        (
-            [1] => Array
-            (
-                [close_at] => 2014-11-12T22:54:16Z
-                [title] => 1.0.0 - Erste stable Version
-                [html_url] => https://github.com/.....
-            )
-        
-            [2] => Array
-            (
-                [close_at] => 2015-08-12T19:20:17Z
-                [title] => 1.0.1 - Bugfix Release
-                [html_url] => https://github.com/.....
-            )
-        
-        )*/
-        $ClosedIssueInfos = $this->collectMilestoneIssues($user, $repository, $ClosedMilestoneInfos);
+        $ClosedMilestoneInfos = $this->collectMilestonesClosed($user, $repository);
+
         $OpenIssueInfos   = $this->collectMilestoneIssues($user, $repository, $OpenMilestoneInfos);
-        /*
-        Array
-        (
-            [1] => Array
-                (
-                    [2] => Array
-                        (
-                            [issue_title] => Texte in Sprachvariablen wandeln
-                            [issue_type] => type_feature
-                            [issue_url] => https://github.com/...
-                        )
-        
-                    [1] => Array
-                        (
-                            [issue_title] => Integration von phpoffice/phpexcel
-                            [issue_type] => type_feature
-                            [issue_url] => https://github.com/...
-                        )
-        
-                )
-        
-            [2] => Array
-                (
-                    [3] => Array
-                        (
-                            [issue_title] => Update Transifex Language Files
-                            [issue_type] => type_feature
-                            [issue_url] => https://github.com/...
-                        )
-        
-                )
-        
-        )
-         */
-        
+        $ClosedIssueInfos = $this->collectMilestoneIssues($user, $repository, $ClosedMilestoneInfos);
+
         $file = fopen($savePath, 'w');
         fwrite($file, '# ' . $label . "\n\r");
         
