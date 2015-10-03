@@ -60,7 +60,7 @@ class GithubChangelogGenerator
         $ClosedIssueInfos = $this->collectMilestoneIssues($user, $repository, $ClosedMilestoneInfos);
 
         $file = fopen($savePath, 'w');
-        fwrite($file, '# ' . $label . "\n\r");
+        fwrite($file, '# ' . $label . "\n\r\n\r");
         
         foreach ($OpenMilestoneInfos as $milestonenumber => $arrvalues)
         {
@@ -116,7 +116,8 @@ class GithubChangelogGenerator
         $data = array();
         if (count($milestones) < 1)
         {
-            throw new \Exception('No milestones found for this repository');
+            echo "No closed milestones found for this repository" . PHP_EOL;
+            return $data;
         }
         foreach ($milestones as $milestone)
         {
@@ -154,6 +155,7 @@ class GithubChangelogGenerator
         $data = array();
         if (count($milestones) < 1)
         {
+            echo "No open milestones found for this repository" . PHP_EOL;
             return $data;
         }
         foreach ($milestones as $milestone)
