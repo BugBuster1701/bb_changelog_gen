@@ -1,0 +1,8 @@
+# Changelog
+
+## [Version 1.0.0](https://github.com/BugBuster1701/bb_changelog_gen/issues?q=milestone%3A%22Version+1.0.0%22+is%3Aclosed) (2015-xx-xx)
+
+### New features
+
+- [\#1](https://github.com/BugBuster1701/bb_changelog_gen/issues/1) Changelog basierend auf Meilensteine
+
