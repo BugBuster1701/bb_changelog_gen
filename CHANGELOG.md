@@ -5,6 +5,7 @@
 ### New features
 
 - [\#3](https://github.com/BugBuster1701/bb_changelog_gen/issues/3) Git Subcommand
+- [\#2](https://github.com/BugBuster1701/bb_changelog_gen/issues/2) Unterstützung von exclude labels
 - [\#1](https://github.com/BugBuster1701/bb_changelog_gen/issues/1) Changelog basierend auf Meilensteine
 
 
