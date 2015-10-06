@@ -14,7 +14,9 @@ $saveFilePath = isset($options['f']) ? $options['f'] : null;
 
 if (!$user || !$repository)
 {
-    die('option -u [username] -r [repository] are required');
+    die('Parameter -u [username] -r [repository] are required'. "\r\n"
+       .'Optional: -t [token] -l [label] -f [filepath]'. "\r\n\r\n");
+    
 }
 
 $generator = new GithubChangelogGenerator($token);

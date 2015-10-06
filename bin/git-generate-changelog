@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+/**
+ * File: /usr/local/bin/git-generate-changelog
+ *
+ */
+    require_once __DIR__ .'/../lib/bb_changelog_gen/bb_changelog_gen-cli.php';
+?>
