@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Github Changelog Generator bb_changelog_gen
+ * 
+ * @author  ins0        Marco Rieger (Parts of github-changelog-generator)
+ * @author  BugBuster   Glen Langer
+ *
+ */
+
 namespace BugBuster\Changelog;
 
 class GithubChangelogGenerator
@@ -41,10 +49,10 @@ class GithubChangelogGenerator
     /**
      * Create a changelog from given username and repository
      *
-     * @param $user
-     * @param $repository
-     * @param null $label
-     * @param null $savePath
+     * @param string $user
+     * @param string $repository
+     * @param string $label
+     * @param string $savePath
      */
     public function createChangelog($user, $repository, $label = null, $savePath = null)
     {
@@ -244,55 +252,6 @@ class GithubChangelogGenerator
                     );
     }
     
-    
-    /**
-     * Collect Tags, not used
-     *  
-     * @param unknown $user
-     * @param unknown $repository
-     * @throws \Exception
-     * @return multitype:NULL
-     * 
-     * @see https://api.github.com/repos/user/repository/tags
-     */
-    private function collectTags($user, $repository)
-    {
-        $tags = $this->callGitHubApi(sprintf('repos/%s/%s/tags', $user, $repository));
-        $data = array();
-        if (count($tags) < 1) 
-        {
-            throw new \Exception('No tags found for this repository');
-        }
-        foreach ($tags as $tag) 
-        {
-            $data[] = $tag->name;
-        	
-        }
-        echo "Found ".count($data)." tags". PHP_EOL;
-        return $data;
-    }
-    
-    /**
-     * Collect Tag Infos, not used
-     * @param unknown $user
-     * @param unknown $repository
-     * @param unknown $tags
-     */
-    private function collectTagInfos($user, $repository, $tags)
-    {
-        $tagDate = array();
-        foreach ($tags as $tag)
-        {
-            $tagRefs = $this->callGitHubApi(sprintf('repos/%s/%s/git/refs/tags/%s', $user, $repository, $tag));
-            $ApiParameter = substr($tagRefs->object->url, strlen('https://api.github.com/'));
-            $tagInfos = $this->callGitHubApi($ApiParameter);
-            $tagDate[] = array('tag'=>$tag,
-                               'date'=>$tagInfos->tagger->date, 
-                               'message'=>$tagInfos->message); 
-        }
-    }
-    
-    
     /**
      * Write release issues to file
      *
@@ -320,94 +279,6 @@ class GithubChangelogGenerator
             }
             fwrite($fileStream, "\r\n");
         }
-    }
-
-    /**
-     * Collect all issues from release tags, not used
-     *
-     * @param $user
-     * @param $repository
-     * @param null $startDate
-     * @return array
-     * @throws Exception
-     */
-    private function collectReleaseIssues($user, $repository, $startDate = null)
-    {
-        $releases = $this->callGitHubApi(sprintf('repos/%s/%s/releases', $user, $repository));
-        $data = [];
-
-        if (count($releases) <= 0) {
-            throw new \Exception('No releases found for this repository');
-        }
-
-        do
-        {
-            $currentRelease = current($releases);
-
-            if ($startDate && date_diff(new \DateTime($currentRelease->published_at), new \DateTime($startDate))->days <= 0) {
-            //if ($startDate && date_diff(new \DateTime($currentRelease->created_at), new \DateTime($startDate))->days <= 0) {
-                continue;
-            }
-
-            $lastRelease = next($releases);
-            $lastReleaseDate = $lastRelease ? $lastRelease->published_at : null;
-            //$lastReleaseDate = $lastRelease ? $lastRelease->created_at : null;
-            prev($releases);
-
-            $currentRelease->issues = $this->collectIssues($lastReleaseDate, $user, $repository);
-            $data[] = $currentRelease;
-
-        }while(next($releases));
-
-        return $data;
-    }
-
-    /**
-     * Collect all issues from release date, not used
-     *
-     * @param $lastReleaseDate
-     * @param $user
-     * @param $repository
-     * @return array
-     */
-    private function collectIssues($lastReleaseDate, $user, $repository)
-    {
-        if (!$this->currentIssues) {
-            $this->currentIssues = $this->callGitHubApi(sprintf('repos/%s/%s/issues', $user, $repository), [
-                'state' => 'closed'
-            ]);
-        }
-        $issues = [];
-        foreach ($this->currentIssues as $x => $issue)
-        {
-            if (new \DateTime($issue->closed_at) > new \DateTime($lastReleaseDate) || $lastReleaseDate == null)
-            {
-                unset($this->currentIssues[$x]);
-
-                $type = $this->getTypeFromLabels($issue->labels);
-                if (!$type && isset($issue->pull_request)) {
-                    $type = $this::LABEL_TYPE_PR;
-                }
-
-                if ($type) {
-                    $events = $this->callGitHubApi(sprintf('repos/%s/%s/issues/%s/events', $user, $repository, $issue->number));
-                    $isMerged = false;
-
-                    foreach ($events as $event) {
-                        if(($event->event == 'merged' || $event->event == 'referenced') && !empty($event->commit_id)) {
-                            $isMerged = true;
-                            break;
-                        }
-                    }
-
-                    if ($isMerged) {
-                        $issues[$type][] = $issue;
-                    }
-                }
-            }
-        }
-
-        return $issues;
     }
 
     /**
