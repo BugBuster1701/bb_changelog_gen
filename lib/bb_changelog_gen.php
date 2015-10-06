@@ -20,6 +20,7 @@ class GithubChangelogGenerator
     const LABEL_TYPE_BUG        = 'type_bug';
     const LABEL_TYPE_FEATURE    = 'type_feature';
     const LABEL_TYPE_PR         = 'type_pr';
+    const LABEL_TYPE_EXCLUDE    = 'type_exclude';
 
     /* @var array */
     private $issueLabelMapping = [
@@ -35,6 +36,21 @@ class GithubChangelogGenerator
             'feature',
             'Feature'
         ],
+    ];
+    
+    /* @var array */
+    private $issueExcludeLabelMapping = [
+    	self::LABEL_TYPE_EXCLUDE => [
+            'duplicate',
+            'question',
+            'invalid',
+            'wontfix',
+            'Duplicate',
+            'Question',
+            'Invalid',
+            'Wontfix'
+        ]
+        
     ];
 
     public function __construct($token = null, $issueMapping = null)
@@ -59,7 +75,7 @@ class GithubChangelogGenerator
         $this->currentIssues = null;
 
         $label    = $label ? $label : "Changelog";  
-        $savePath = !$savePath ? getcwd() . '/' . $this->fileName : null;
+        $savePath = !$savePath ? getcwd() . '/' . $this->fileName : $savePath;
         
         $OpenMilestoneInfos   = $this->collectMilestonesOpen($user, $repository);
         $ClosedMilestoneInfos = $this->collectMilestonesClosed($user, $repository);
@@ -285,19 +301,31 @@ class GithubChangelogGenerator
      * Get the Issue Type from Issue Labels
      *
      * @param $labels
-     * @return bool|int|null|string
+     * @return null|string
      */
     private function getTypeFromLabels($labels)
     {
         $type = null;
+        $foundLabel   = false;
+        $excludeLabel = false;
+        
         foreach ($labels as $label)
         {
-            $foundLabel = $this->getTypeFromLabel($label->name);
-            if($foundLabel) 
+            if (!$foundLabel) 
             {
-                return $foundLabel;
+            	$foundLabel   = $this->getTypeFromLabel($label->name);
+            }
+            if (!$excludeLabel) 
+            {
+            	$excludeLabel = $this->getTypeFromLabel($label->name, $this->issueExcludeLabelMapping);
             }
         }
+
+        if($foundLabel && !$excludeLabel)
+        {
+            return $foundLabel;
+        }
+        
 
         return null;
     }
