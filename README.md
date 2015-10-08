@@ -6,6 +6,8 @@
 [![License](https://img.shields.io/badge/license-LGPL--3.0%2B-green.svg)](https://github.com/BugBuster1701/bb_changelog_gen)
 [![HuBoard badge](http://img.shields.io/badge/Hu-Board-7965cc.svg)](https://huboard.com/BugBuster1701/bb_changelog_gen)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/6c03efb6-f697-493d-97ca-44fc18491fa0/small.png)](https://insight.sensiolabs.com/projects/6c03efb6-f697-493d-97ca-44fc18491fa0)
+
 Generiert eine Changelog Datei im Markdown Format von deinem Repository auf GitHub,
 basierend auf Milestones und dessen Issues.
 
