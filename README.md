@@ -1,9 +1,9 @@
 # BugBuster's GitHub Changelog Generator
 
-[![Github Releases](https://img.shields.io/github/downloads/BugBuster1701/bb_changelog_gen/latest/total.svg)](https://github.com/BugBuster1701/bb_changelog_gen/archive/master.zip)
-[![GitHub release](https://img.shields.io/github/release/BugBuster1701/bb_changelog_gen.svg)](https://github.com/BugBuster1701/bb_changelog_gen)
-[![GitHub tag](https://img.shields.io/github/tag/BugBuster1701/bb_changelog_gen.svg)](https://github.com/BugBuster1701/bb_changelog_gen)
-[![GitHub license](https://img.shields.io/badge/license-LGPL--3.0%2B-green.svg)](https://github.com/BugBuster1701/bb_changelog_gen)
+[![Downloads](https://img.shields.io/github/downloads/BugBuster1701/bb_changelog_gen/latest/total.svg)](https://github.com/BugBuster1701/bb_changelog_gen/archive/master.zip)
+[![Release](https://img.shields.io/github/release/BugBuster1701/bb_changelog_gen.svg)](https://github.com/BugBuster1701/bb_changelog_gen)
+[![Tag](https://img.shields.io/github/tag/BugBuster1701/bb_changelog_gen.svg)](https://github.com/BugBuster1701/bb_changelog_gen)
+[![License](https://img.shields.io/badge/license-LGPL--3.0%2B-green.svg)](https://github.com/BugBuster1701/bb_changelog_gen)
 [![HuBoard badge](http://img.shields.io/badge/Hu-Board-7965cc.svg)](https://huboard.com/BugBuster1701/bb_changelog_gen)
 
 Generiert eine Changelog Datei im Markdown Format von deinem Repository auf GitHub,
