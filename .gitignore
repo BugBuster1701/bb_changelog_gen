@@ -1,0 +1,7 @@
+*.bak
+.buildpath
+.project
+.project
+.settings/
+
+sammel.txt

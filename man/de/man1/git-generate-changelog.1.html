@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>git-generate-changelog(1) - BugBuster's GitHub Changelog Generator</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#SYNTAX">SYNTAX</a>
+    <a href="#BESCHREIBUNG">BESCHREIBUNG</a>
+    <a href="#OPTIONEN">OPTIONEN</a>
+    <a href="#BEISPIELE">BEISPIELE</a>
+    <a href="#AUTOR">AUTOR</a>
+    <a href="#FEHLER-MELDEN">FEHLER MELDEN</a>
+    <a href="#SIEHE-AUCH">SIEHE AUCH</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>git-generate-changelog(1)</li>
+    <li class='tc'></li>
+    <li class='tr'>git-generate-changelog(1)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>git-generate-changelog</code> - <span class="man-whatis">BugBuster's GitHub Changelog Generator</span>
+</p>
+
+<h2 id="SYNTAX">SYNTAX</h2>
+
+<p><code>git-generate-changelog</code> [OPTIONS]</p>
+
+<h2 id="BESCHREIBUNG">BESCHREIBUNG</h2>
+
+<p>Generiert eine Changelog Datei im Markdown Format von deinem Repository auf GitHub, basierend auf Milestones und dessen Issues.</p>
+
+<h2 id="OPTIONEN">OPTIONEN</h2>
+
+<p>-u [username]</p>
+
+<p>Dein GitHub Username.</p>
+
+<p>-r [repository]</p>
+
+<p>Dein GitHub Repository Name</p>
+
+<p>-t [token]</p>
+
+<p>Optional: GitHub Token. GitHub erlaubt nur 50 Abfragen ohne Authentifizierung. Daher sollte mit dem Parameter -t [40-stelliger-Token] gearbeitet werden.</p>
+
+<p>-l [label]</p>
+
+<p>Optional: Überschreibt den Inhalt der Überschrift, ohne Angabe ist das: "Changelog".</p>
+
+<p>-f [filepath]</p>
+
+<p>Optional: Ersetzt Pfad und Dateiname der Changelog, ohne Angabe erfolgt die Generierung im aktuellem Verzeichnis und bekommt den Dateinamen "CHANGELOG.md"</p>
+
+<h2 id="BEISPIELE">BEISPIELE</h2>
+
+<ul>
+<li><p>Wenn installiert über install.sh:</p>
+
+<p>$ git generate-changelog -u Mustermann -r MyRepository</p></li>
+<li><p>Nutzung ohne Installation</p>
+
+<p>$ php ./lib/bb_changelog_gen-cli.php  -u Mustermann -r MyRepository</p></li>
+</ul>
+
+
+<h2 id="AUTOR">AUTOR</h2>
+
+<p> Written by Glen Langer</p>
+
+<h2 id="FEHLER-MELDEN">FEHLER MELDEN</h2>
+
+<p>&lt;<a href="https://github.com/BugBuster1701/bb_changelog_gen/issues" data-bare-link="true">https://github.com/BugBuster1701/bb_changelog_gen/issues</a>&gt;</p>
+
+<h2 id="SIEHE-AUCH">SIEHE AUCH</h2>
+
+<p>&lt;<a href="https://github.com/BugBuster1701/bb_changelog_gen" data-bare-link="true">https://github.com/BugBuster1701/bb_changelog_gen</a>&gt;</p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'></li>
+    <li class='tc'>October 2015</li>
+    <li class='tr'>git-generate-changelog(1)</li>
+  </ol>
+
+  </div>
+</body>
+</html>

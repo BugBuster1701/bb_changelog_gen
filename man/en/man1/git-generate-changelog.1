@@ -1,0 +1,68 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "GIT\-GENERATE\-CHANGELOG" "1" "October 2015" "" ""
+.
+.SH "NAME"
+\fBgit\-generate\-changelog\fR \- BugBuster\'s GitHub Changelog Generator
+.
+.SH "SYNOPSIS"
+\fBgit\-generate\-changelog\fR [OPTIONS]
+.
+.SH "DESCRIPTION"
+Generates a changelog file in markdown format from a repository on GitHub, based on milestones and its issues\.
+.
+.SH "OPTIONS"
+\-u [username]
+.
+.P
+Your GitHub username\.
+.
+.P
+\-r [repository]
+.
+.P
+Your GitHub repository name
+.
+.P
+\-t [token]
+.
+.P
+Optional: GitHub tokens\. GitHub allowed only 50 queries without authentication\. Therefore, you should work with the parameter \-t [40\-digit\-token]\.
+.
+.P
+\-l [label]
+.
+.P
+Optional: Overrides the content of the heading\. Default is: "Changelog"\.
+.
+.P
+\-f [filepath]
+.
+.P
+Optional: Replaces the path and filename of the changelog\. Without this parameter, the generation is carried out in the current directory and has the file name "CHANGELOG\.md"
+.
+.SH "EXAMPLES"
+.
+.IP "\(bu" 4
+When installed via install\.sh:
+.
+.IP
+$ git generate\-changelog \-u Doe \-r MyRepository
+.
+.IP "\(bu" 4
+Using without installation
+.
+.IP
+$ php \./lib/bb_changelog_gen\-cli\.php \-u Doe \-r MyRepository
+.
+.IP "" 0
+.
+.SH "AUTHOR"
+Written by Glen Langer
+.
+.SH "REPORTING BUGS"
+<\fIhttps://github\.com/BugBuster1701/bb_changelog_gen/issues\fR>
+.
+.SH "SEE ALSO"
+<\fIhttps://github\.com/BugBuster1701/bb_changelog_gen\fR>
