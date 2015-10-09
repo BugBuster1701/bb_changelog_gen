@@ -37,17 +37,23 @@ Optionale Parameter: ``-t [token] -l [label] -f [filepath]``
 Optionale Parameter: ``-t [token] -l [label] -f [filepath]``
 
 
-## Ausgabe Beispiel
-
-Siehe [Changelog][3] von diesem Projekt.
-
-
 ## GitHub Token
 
 GitHub erlaubt nur 50 Abfragen ohne Authentifizierung. Daher sollte mit dem
 Parameter ``-t [40-stelliger-Token]`` gearbeitet werden.
 
+Es kann auch die Umgebungsvariable ``GITHUB_CHANGELOG_GENERATOR_TOKEN`` gesetzt werden:
+
+``export GITHUB_CHANGELOG_GENERATOR_TOKEN="40-stelliger-Token"``
+
+Beispielsweise in der Datei ``~/.bashrc``.
+
 Einen Token kann [hier generiert werden][4].
+
+
+## Ausgabe Beispiel
+
+Siehe [Changelog][3] von diesem Projekt.
 
 
 [1]: https://github.com/ins0/github-changelog-generator

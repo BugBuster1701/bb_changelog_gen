@@ -4,7 +4,8 @@ namespace BugBuster\Changelog;
 
 require_once __DIR__ .'/bb_changelog_gen.php';
 
-$options = getopt("u:r:t:l:f:");
+$envToken = getenv('GITHUB_CHANGELOG_GENERATOR_TOKEN');
+$options  = getopt("u:r:t:l:f:");
 
 $token        = isset($options['t']) ? $options['t'] : null;
 $user         = isset($options['u']) ? $options['u'] : null;
@@ -17,6 +18,11 @@ if (!$user || !$repository)
     die('Parameter -u [username] -r [repository] are required'. "\r\n"
        .'Optional: -t [token] -l [label] -f [filepath]'. "\r\n\r\n");
     
+}
+
+if ( null == $token && false !== $envToken) 
+{
+	$token = $envToken;
 }
 
 $generator = new GithubChangelogGenerator($token);
