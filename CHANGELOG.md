@@ -1,10 +1,20 @@
 # Changelog bb_changelog_gen
 
-## [Version 1.0.0](https://github.com/BugBuster1701/bb_changelog_gen/issues?q=milestone%3A%22Version+1.0.0%22+is%3Aclosed) (2015-10-08)
+## [Version 1.1.0](https://github.com/BugBuster1701/bb_changelog_gen/issues?q=milestone%3A%22Version+1.1.0%22+is%3Aclosed) (2015-xx-xx)
 
 ### New features
 
-- [\#5](https://github.com/BugBuster1701/bb_changelog_gen/issues/5) Exclude Test
+- [\#9](https://github.com/BugBuster1701/bb_changelog_gen/issues/9) Umgebungsvariable unterstützen für Token
+
+### Fixed bugs
+
+- [\#7](https://github.com/BugBuster1701/bb_changelog_gen/issues/7) [Insight] Unused method, property, variable or parameter - in bb_changelog_gen.php
+- [\#6](https://github.com/BugBuster1701/bb_changelog_gen/issues/6) [Insight] Unused method, property, variable or parameter - in bb_changelog_gen.php
+
+## [Version 1.0.0](https://github.com/BugBuster1701/bb_changelog_gen/issues?q=milestone%3A%22Version+1.0.0%22+is%3Aclosed) (2015-10-08)
+
+### New features
+
 - [\#4](https://github.com/BugBuster1701/bb_changelog_gen/issues/4) manpages für das Kommando git-generate-changelog
 - [\#3](https://github.com/BugBuster1701/bb_changelog_gen/issues/3) Git Subcommand
 - [\#2](https://github.com/BugBuster1701/bb_changelog_gen/issues/2) Unterstützung von exclude labels
