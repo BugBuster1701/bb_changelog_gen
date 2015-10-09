@@ -15,8 +15,6 @@ class GithubChangelogGenerator
     private $token;
     private $fileName = 'CHANGELOG.md';
 
-    private $currentIssues;
-
     const LABEL_TYPE_BUG        = 'type_bug';
     const LABEL_TYPE_FEATURE    = 'type_feature';
     const LABEL_TYPE_PR         = 'type_pr';
@@ -72,8 +70,6 @@ class GithubChangelogGenerator
      */
     public function createChangelog($user, $repository, $label = null, $savePath = null)
     {
-        $this->currentIssues = null;
-
         $label    = $label ? $label : "Changelog";  
         $savePath = !$savePath ? getcwd() . '/' . $this->fileName : $savePath;
         
@@ -305,7 +301,6 @@ class GithubChangelogGenerator
      */
     private function getTypeFromLabels($labels)
     {
-        $type = null;
         $foundLabel   = false;
         $excludeLabel = false;
         
