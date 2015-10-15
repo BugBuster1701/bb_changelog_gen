@@ -287,6 +287,9 @@ class GithubChangelogGenerator
 
             foreach ($currentIssues as $issue) 
             {
+                // replace " __" with " \_\_"
+                // then in markdown editors ist " _" = bold
+                $issue['title'] = preg_replace('/ __/',' \_\_',$issue['title']);
                 fwrite($fileStream, sprintf('- [\#%s](%s) %s' . "\r\n", $issue['number'], $issue['html_url'], $issue['title']));
             }
             fwrite($fileStream, "\r\n");
