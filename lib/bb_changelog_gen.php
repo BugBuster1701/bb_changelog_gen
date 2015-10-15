@@ -154,8 +154,9 @@ class GithubChangelogGenerator
                                          'html_url' => $html_url
                                         ];
         }
-        arsort($data); //TODO RSort by closed_at
-
+        
+        arsort($data); 
+        
         echo "Found ".count($data)." closed milestone(s)". PHP_EOL;
         return $data;
     }
@@ -189,11 +190,13 @@ class GithubChangelogGenerator
                                 , urlencode('is:closed')
                             );
             $data[$milestone->number] = ['created_at' => $milestone->created_at,
-                                         'title'    => $milestone->title,
-                                         'html_url' => $html_url
+                                         'title'      => $milestone->title,
+                                         'html_url'   => $html_url
                                         ];
         }
-        arsort($data); //TODO RSort by closed_at
+        
+        arsort($data); 
+        
         echo "Found ".count($data)." open milestone(s)". PHP_EOL;
         return $data;
     }

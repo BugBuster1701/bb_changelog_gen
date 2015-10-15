@@ -8,6 +8,7 @@
 
 ### Fixed bugs
 
+- [\#13](https://github.com/BugBuster1701/bb_changelog_gen/issues/13) Maskieren von " \*"
 - [\#12](https://github.com/BugBuster1701/bb_changelog_gen/issues/12) Datumswert Closed_at auf Zeitzone umsetzen
 - [\#11](https://github.com/BugBuster1701/bb_changelog_gen/issues/11) Maskierung fehlt für " \_"
 - [\#10](https://github.com/BugBuster1701/bb_changelog_gen/issues/10) [Insight] Boolean should be compared strictly - in bb_changelog_gen-cli.php
