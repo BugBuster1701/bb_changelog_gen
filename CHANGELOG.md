@@ -1,6 +1,5 @@
 # BugBuster's GitHub Changelog Generator
-
-## [Version 1.1.0](https://github.com/BugBuster1701/bb_changelog_gen/issues?q=milestone%3A%22Version+1.1.0%22+is%3Aclosed) (2015-xx-xx)
+## [Version 1.1.0](https://github.com/BugBuster1701/bb_changelog_gen/issues?q=milestone%3A%22Version+1.1.0%22+is%3Aclosed) (2015-10-15)
 
 ### New features
 
@@ -8,6 +7,7 @@
 
 ### Fixed bugs
 
+- [\#14](https://github.com/BugBuster1701/bb_changelog_gen/issues/14) Zeilenende durch PHP_EOL  ersetzen
 - [\#13](https://github.com/BugBuster1701/bb_changelog_gen/issues/13) Maskieren von " \*"
 - [\#12](https://github.com/BugBuster1701/bb_changelog_gen/issues/12) Datumswert Closed_at auf Zeitzone umsetzen
 - [\#11](https://github.com/BugBuster1701/bb_changelog_gen/issues/11) Maskierung fehlt für " \_"
