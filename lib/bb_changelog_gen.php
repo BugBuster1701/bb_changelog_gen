@@ -293,7 +293,7 @@ class GithubChangelogGenerator
                 // replace " _" or " *" with " \_"
                 // then in markdown editors ist " _" or " *" = italic                
                 $issue['title'] = preg_replace('/ _/' ,' \_'  ,$issue['title']);
-                $issue['title'] = preg_replace('/ */' ,' \*'  ,$issue['title']);
+                $issue['title'] = preg_replace('/ \*/' ,' \\*'  ,$issue['title']);
                 fwrite($fileStream, sprintf('- [\#%s](%s) %s' . "\r\n", 
                                             $issue['number'], 
                                             $issue['html_url'], 

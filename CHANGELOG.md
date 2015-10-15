@@ -4,24 +4,24 @@
 
 ### New features
 
-- [\#9](https://github.com/BugBuster1701/bb_changelog_gen/issues/9)  \*U \*m \*g \*e \*b \*u \*n \*g \*s \*v \*a \*r \*i \*a \*b \*l \*e \* \*u \*n \*t \*e \*r \*s \*t \*√ \*º \*t \*z \*e \*n \* \*f \*√ \*º \*r \* \*T \*o \*k \*e \*n \*
+- [\#9](https://github.com/BugBuster1701/bb_changelog_gen/issues/9) Umgebungsvariable unterst√ºtzen f√ºr Token
 
 ### Fixed bugs
 
-- [\#12](https://github.com/BugBuster1701/bb_changelog_gen/issues/12)  \*D \*a \*t \*u \*m \*s \*w \*e \*r \*t \* \*C \*l \*o \*s \*e \*d \*_ \*a \*t \* \*a \*u \*f \* \*Z \*e \*i \*t \*z \*o \*n \*e \* \*u \*m \*s \*e \*t \*z \*e \*n \*
-- [\#11](https://github.com/BugBuster1701/bb_changelog_gen/issues/11)  \*M \*a \*s \*k \*i \*e \*r \*u \*n \*g \* \*f \*e \*h \*l \*t \* \*f \*√ \*º \*r \* \*" \* \*\ \*_ \*" \*
-- [\#10](https://github.com/BugBuster1701/bb_changelog_gen/issues/10)  \*[ \*I \*n \*s \*i \*g \*h \*t \*] \* \*B \*o \*o \*l \*e \*a \*n \* \*s \*h \*o \*u \*l \*d \* \*b \*e \* \*c \*o \*m \*p \*a \*r \*e \*d \* \*s \*t \*r \*i \*c \*t \*l \*y \* \*- \* \*i \*n \* \*b \*b \*_ \*c \*h \*a \*n \*g \*e \*l \*o \*g \*_ \*g \*e \*n \*- \*c \*l \*i \*. \*p \*h \*p \*
-- [\#7](https://github.com/BugBuster1701/bb_changelog_gen/issues/7)  \*[ \*I \*n \*s \*i \*g \*h \*t \*] \* \*U \*n \*u \*s \*e \*d \* \*m \*e \*t \*h \*o \*d \*, \* \*p \*r \*o \*p \*e \*r \*t \*y \*, \* \*v \*a \*r \*i \*a \*b \*l \*e \* \*o \*r \* \*p \*a \*r \*a \*m \*e \*t \*e \*r \* \*- \* \*i \*n \* \*b \*b \*_ \*c \*h \*a \*n \*g \*e \*l \*o \*g \*_ \*g \*e \*n \*. \*p \*h \*p \*
-- [\#6](https://github.com/BugBuster1701/bb_changelog_gen/issues/6)  \*[ \*I \*n \*s \*i \*g \*h \*t \*] \* \*U \*n \*u \*s \*e \*d \* \*m \*e \*t \*h \*o \*d \*, \* \*p \*r \*o \*p \*e \*r \*t \*y \*, \* \*v \*a \*r \*i \*a \*b \*l \*e \* \*o \*r \* \*p \*a \*r \*a \*m \*e \*t \*e \*r \* \*- \* \*i \*n \* \*b \*b \*_ \*c \*h \*a \*n \*g \*e \*l \*o \*g \*_ \*g \*e \*n \*. \*p \*h \*p \*
+- [\#12](https://github.com/BugBuster1701/bb_changelog_gen/issues/12) Datumswert Closed_at auf Zeitzone umsetzen
+- [\#11](https://github.com/BugBuster1701/bb_changelog_gen/issues/11) Maskierung fehlt f√ºr " \_"
+- [\#10](https://github.com/BugBuster1701/bb_changelog_gen/issues/10) [Insight] Boolean should be compared strictly - in bb_changelog_gen-cli.php
+- [\#7](https://github.com/BugBuster1701/bb_changelog_gen/issues/7) [Insight] Unused method, property, variable or parameter - in bb_changelog_gen.php
+- [\#6](https://github.com/BugBuster1701/bb_changelog_gen/issues/6) [Insight] Unused method, property, variable or parameter - in bb_changelog_gen.php
 
 ## [Version 1.0.0](https://github.com/BugBuster1701/bb_changelog_gen/issues?q=milestone%3A%22Version+1.0.0%22+is%3Aclosed) (2015-10-08)
 
 ### New features
 
-- [\#4](https://github.com/BugBuster1701/bb_changelog_gen/issues/4)  \*m \*a \*n \*p \*a \*g \*e \*s \* \*f \*√ \*º \*r \* \*d \*a \*s \* \*K \*o \*m \*m \*a \*n \*d \*o \* \*g \*i \*t \*- \*g \*e \*n \*e \*r \*a \*t \*e \*- \*c \*h \*a \*n \*g \*e \*l \*o \*g \*
-- [\#3](https://github.com/BugBuster1701/bb_changelog_gen/issues/3)  \*G \*i \*t \* \*S \*u \*b \*c \*o \*m \*m \*a \*n \*d \*
-- [\#2](https://github.com/BugBuster1701/bb_changelog_gen/issues/2)  \*U \*n \*t \*e \*r \*s \*t \*√ \*º \*t \*z \*u \*n \*g \* \*v \*o \*n \* \*e \*x \*c \*l \*u \*d \*e \* \*l \*a \*b \*e \*l \*s \*
-- [\#1](https://github.com/BugBuster1701/bb_changelog_gen/issues/1)  \*C \*h \*a \*n \*g \*e \*l \*o \*g \* \*b \*a \*s \*i \*e \*r \*e \*n \*d \* \*a \*u \*f \* \*M \*e \*i \*l \*e \*n \*s \*t \*e \*i \*n \*e \*
+- [\#4](https://github.com/BugBuster1701/bb_changelog_gen/issues/4) manpages f√ºr das Kommando git-generate-changelog
+- [\#3](https://github.com/BugBuster1701/bb_changelog_gen/issues/3) Git Subcommand
+- [\#2](https://github.com/BugBuster1701/bb_changelog_gen/issues/2) Unterst√ºtzung von exclude labels
+- [\#1](https://github.com/BugBuster1701/bb_changelog_gen/issues/1) Changelog basierend auf Meilensteine
 
 
 
