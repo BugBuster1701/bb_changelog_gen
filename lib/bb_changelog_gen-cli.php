@@ -20,7 +20,7 @@ if (!$user || !$repository)
     
 }
 
-if ( null == $token && false !== $envToken) 
+if ( null === $token && false !== $envToken) 
 {
 	$token = $envToken;
 }
