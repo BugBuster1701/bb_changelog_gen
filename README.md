@@ -1,8 +1,6 @@
 # BugBuster's GitHub Changelog Generator
 
-[![Downloads](https://img.shields.io/github/downloads/BugBuster1701/bb_changelog_gen/latest/total.svg)](https://github.com/BugBuster1701/bb_changelog_gen/archive/master.zip)
-[![Release](https://img.shields.io/github/release/BugBuster1701/bb_changelog_gen.svg)](https://github.com/BugBuster1701/bb_changelog_gen)
-[![Tag](https://img.shields.io/github/tag/BugBuster1701/bb_changelog_gen.svg)](https://github.com/BugBuster1701/bb_changelog_gen)
+[![Version](https://badge.fury.io/gh/BugBuster1701%2Fbb_changelog_gen.svg)](https://github.com/BugBuster1701/bb_changelog_gen)
 [![License](https://img.shields.io/badge/license-LGPL--3.0%2B-green.svg)](https://github.com/BugBuster1701/bb_changelog_gen)
 [![HuBoard badge](http://img.shields.io/badge/Hu-Board-7965cc.svg)](https://huboard.com/BugBuster1701/bb_changelog_gen)
 
@@ -11,9 +9,11 @@
 Generiert eine Changelog Datei im Markdown Format von deinem Repository auf GitHub,
 basierend auf Milestones und dessen Issues.
 
+Gesucht werden alle Meilensteine mit mindestens einem geschlossenen Ticket.
 
-Inspiriert von [ins0/github-changelog-generator][1] (Release basierend) und
-[skywinder/github-changelog-generator][2] (Tag basierend)
+Inspiriert von
+- [ins0/github-changelog-generator][1] (Release basierend)
+- [skywinder/github-changelog-generator][2] (Tag basierend)
 
 
 ## Installation
@@ -37,17 +37,23 @@ Optionale Parameter: ``-t [token] -l [label] -f [filepath]``
 Optionale Parameter: ``-t [token] -l [label] -f [filepath]``
 
 
-## Ausgabe Beispiel
-
-Siehe [Changelog][3] von diesem Projekt.
-
-
 ## GitHub Token
 
 GitHub erlaubt nur 50 Abfragen ohne Authentifizierung. Daher sollte mit dem
 Parameter ``-t [40-stelliger-Token]`` gearbeitet werden.
 
+Es kann auch die Umgebungsvariable ``GITHUB_CHANGELOG_GENERATOR_TOKEN`` gesetzt werden:
+
+``export GITHUB_CHANGELOG_GENERATOR_TOKEN="40-stelliger-Token"``
+
+Beispielsweise in der Datei ``~/.bashrc``.
+
 Einen Token kann [hier generiert werden][4].
+
+
+## Ausgabe Beispiel
+
+Siehe [Changelog][3] von diesem Projekt.
 
 
 [1]: https://github.com/ins0/github-changelog-generator
