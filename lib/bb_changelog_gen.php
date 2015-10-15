@@ -112,7 +112,7 @@ class GithubChangelogGenerator
             fwrite($file, sprintf('## [%s](%s) (%s)' . "\r\n\r\n", 
                                     $arrvalues['title'], 
                                     $arrvalues['html_url'], 
-                                    date_format(date_create($arrvalues['close_at']),'Y-m-d') 
+                                    date('Y-m-d', strtotime($arrvalues['close_at']))
                                  )
                   );
         	$this->writeReleaseIssues($file, $issuesByType);
