@@ -15,8 +15,8 @@ $saveFilePath = isset($options['f']) ? $options['f'] : null;
 
 if (!$user || !$repository)
 {
-    die('Parameter -u [username] -r [repository] are required'. "\r\n"
-       .'Optional: -t [token] -l [label] -f [filepath]'. "\r\n\r\n");
+    die('Parameter -u [username] -r [repository] are required'. PHP_EOL 
+       .'Optional: -t [token] -l [label] -f [filepath]'. PHP_EOL . PHP_EOL);
     
 }
 
