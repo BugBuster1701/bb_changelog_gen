@@ -80,7 +80,7 @@ class GithubChangelogGenerator
         $ClosedIssueInfos = $this->collectMilestoneIssues($user, $repository, $ClosedMilestoneInfos);
 
         $file = fopen($savePath, 'w');
-        fwrite($file, '# ' . $label . PHP_EOL);
+        fwrite($file, '# ' . $label . PHP_EOL . PHP_EOL);
         
         foreach ($OpenMilestoneInfos as $milestonenumber => $arrvalues)
         {
@@ -384,7 +384,12 @@ class GithubChangelogGenerator
         $url = sprintf('https://api.github.com/%s?%s', $call, http_build_query($params));
 
         $context  = stream_context_create($options);
-        $response = file_get_contents($url, null, $context);
+        $response = @file_get_contents($url, null, $context);
+        if ($response === false) 
+        {
+        	echo 'HTTP 404 Not Found.'. PHP_EOL .'Are username and repository correctly specified?'. PHP_EOL . PHP_EOL;
+        	exit(404);
+        }
         $response = $response ? json_decode($response) : [];
 
         if(count(preg_grep('#Link: <(.+?)>; rel="next"#', $http_response_header)) === 1) 
