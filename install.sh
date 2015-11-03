@@ -16,7 +16,33 @@ if [ ! -d "$MAN_DIR_EN" ]; then
 	sudo mkdir -p $MAN_DIR_EN
 fi
 
-echo "Kopiere Dateien"
+declare -A msg
+
+#############
+##
+## English
+##
+#############
+msg[START_COPY]="Copy files ... "
+msg[GEN_MAN_DB]="Generate the internal database of 'man' ... "
+msg[CALL_GEN_CL]="Call: git generate-changelog"
+msg[MANUAL]="Manual: man git-generate-changelog"
+msg[OK]="OK"
+
+#############
+##
+## German
+##
+#############
+if [[ ${LANG:0:2} == de ]]; then
+	msg[START_COPY]="Kopiere Dateien ... "
+	msg[GEN_MAN_DB]="Generiere man's interne Datenbank ... "
+	msg[CALL_GEN_CL]="Aufruf: git generate-changelog"
+	msg[MANUAL]="Handbuch: man git-generate-changelog"
+	msg[OK]="OK"
+fi
+
+echo -n "${msg[START_COPY]}"
 
 sudo cp lib/bb_changelog_gen.php     $LIB_DIR/
 sudo cp lib/bb_changelog_gen-cli.php $LIB_DIR/
@@ -34,10 +60,15 @@ sudo chmod 755 $BIN_DIR/git-generate-changelog
 sudo chmod 644 $MAN_DIR_DE/git-generate-changelog.1
 sudo chmod 644 $MAN_DIR_EN/git-generate-changelog.1
 
-echo "Generiere man's interne Datenbank"
+echo "${msg[OK]}"
 
+echo -n "${msg[GEN_MAN_DB]}"
 sudo mandb >/dev/null
+echo "${msg[OK]}"
+
 echo
-echo "Aufruf  : git generate-changelog"
-echo "Handbuch: man git-generate-changelog"
+echo "${msg[CALL_GEN_CL]}"
+echo "${msg[MANUAL]}"
 echo
+
+ 
