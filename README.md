@@ -23,10 +23,17 @@ Download von [GitHub][5] und entpacken.
 Aufruf der install.sh, diese kopiert Dateien nach ``/usr/local/[lib|bin|man]``. 
 Dazu werden ``sudo`` Rechte benötigt.
 
+
 ## Deinstallation
 
 Aufruf der uninstall.sh, diese löscht die Dateien aus ``/usr/local/[lib|bin|man]``. 
 Dazu werden ``sudo`` Rechte benötigt.
+
+
+## Anforderungen
+
+- PHP 5.4.0 or higher
+- allow_url_fopen = On
 
 
 ## Nutzung

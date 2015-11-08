@@ -1,4 +1,28 @@
 # BugBuster's GitHub Changelog Generator
+
+## [Version 1.2.0](https://github.com/BugBuster1701/bb_changelog_gen/issues?q=milestone%3A%22Version+1.2.0%22+is%3Aclosed) (2015-11-08)
+
+### New features
+
+- [\#19](https://github.com/BugBuster1701/bb_changelog_gen/issues/19) Hint: sudo in install.sh
+- [\#18](https://github.com/BugBuster1701/bb_changelog_gen/issues/18) Translate install.sh messages
+- [\#17](https://github.com/BugBuster1701/bb_changelog_gen/issues/17) Add uninstall.sh
+- [\#16](https://github.com/BugBuster1701/bb_changelog_gen/issues/16) New Label Mapping Type: Maintenance
+- [\#15](https://github.com/BugBuster1701/bb_changelog_gen/issues/15) New Label Mapping Type: Documentation
+
+### Fixed bugs
+
+- [\#20](https://github.com/BugBuster1701/bb_changelog_gen/issues/20) 404 Not Found abfangen
+
+### Documentation improvements
+
+- [\#22](https://github.com/BugBuster1701/bb_changelog_gen/issues/22) Documentation new features
+- [\#21](https://github.com/BugBuster1701/bb_changelog_gen/issues/21) Hint: Needs allow_url_fopen = On
+
+### Maintenance case
+
+- [\#23](https://github.com/BugBuster1701/bb_changelog_gen/issues/23) Code Verbesserungen
+
 ## [Version 1.1.0](https://github.com/BugBuster1701/bb_changelog_gen/issues?q=milestone%3A%22Version+1.1.0%22+is%3Aclosed) (2015-10-15)
 
 ### New features

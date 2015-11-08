@@ -15,26 +15,40 @@ class GithubChangelogGenerator
     private $token;
     private $fileName = 'CHANGELOG.md';
 
-    const LABEL_TYPE_BUG        = 'type_bug';
-    const LABEL_TYPE_FEATURE    = 'type_feature';
-    const LABEL_TYPE_PR         = 'type_pr';
-    const LABEL_TYPE_EXCLUDE    = 'type_exclude';
+    const LABEL_TYPE_BUG         = 'type_bug';
+    const LABEL_TYPE_FEATURE     = 'type_feature';
+    const LABEL_TYPE_PR          = 'type_pr';
+    const LABEL_TYPE_EXCLUDE     = 'type_exclude';
+    const LABEL_TYPE_DOC         = 'type_doc';
+    const LABEL_TYPE_MAINTENANCE = 'type_maintenance';
 
     /* @var array */
     private $issueLabelMapping = [
-        self::LABEL_TYPE_BUG => [
-            'bug',
-            'Bug',
-            'defect',
-            'Defect'
-        ],
-        self::LABEL_TYPE_FEATURE => [
-            'enhancement',
-            'Enhancement',
-            'feature',
-            'Feature'
-        ],
-    ];
+                    self::LABEL_TYPE_BUG => [
+                        'bug',
+                        'Bug',
+                        'defect',
+                        'Defect'
+                    ],
+                    self::LABEL_TYPE_FEATURE => [
+                        'enhancement',
+                        'Enhancement',
+                        'feature',
+                        'Feature'
+                    ],
+                    self::LABEL_TYPE_DOC => [
+                        'doc',
+                        'Doc',
+                        'documentation',
+                        'Documentation'
+                    ],
+                    self::LABEL_TYPE_MAINTENANCE => [
+                        'maintenance',
+                        'Maintenance',
+                        'service',
+                        'Service'
+                    ],
+                ];
     
     /* @var array */
     private $issueExcludeLabelMapping = [
@@ -53,7 +67,8 @@ class GithubChangelogGenerator
 
     public function __construct($token = null, $issueMapping = null)
     {
-        if ($issueMapping) {
+        if ($issueMapping) 
+        {
             $this->issueLabelMapping = $issueMapping;
         }
 
@@ -86,7 +101,9 @@ class GithubChangelogGenerator
         {
             $issuesByType = $this->orderIssuesByTypeForMilestone($OpenIssueInfos[$milestonenumber]);
             if (0 == count($issuesByType[$this::LABEL_TYPE_FEATURE]) &&
-                0 == count($issuesByType[$this::LABEL_TYPE_BUG])
+                0 == count($issuesByType[$this::LABEL_TYPE_BUG])     &&
+                0 == count($issuesByType[$this::LABEL_TYPE_DOC])     &&
+                0 == count($issuesByType[$this::LABEL_TYPE_MAINTENANCE])
                 ) 
             {
             	continue;  //Open milestone without closed issues
@@ -104,7 +121,9 @@ class GithubChangelogGenerator
         {
             $issuesByType = $this->orderIssuesByTypeForMilestone($ClosedIssueInfos[$milestonenumber]);
             if (0 == count($issuesByType[$this::LABEL_TYPE_FEATURE]) &&
-                0 == count($issuesByType[$this::LABEL_TYPE_BUG])
+                0 == count($issuesByType[$this::LABEL_TYPE_BUG])     &&
+                0 == count($issuesByType[$this::LABEL_TYPE_DOC])     &&
+                0 == count($issuesByType[$this::LABEL_TYPE_MAINTENANCE])
             )
             {
                 continue;  //Closed milestone without closed issues
@@ -188,7 +207,7 @@ class GithubChangelogGenerator
                                 , $repository
                                 , urlencode(':"'. $milestone->title . '"')
                                 , urlencode('is:closed')
-                            );
+                               );
             $data[$milestone->number] = ['created_at' => $milestone->created_at,
                                          'title'      => $milestone->title,
                                          'html_url'   => $html_url
@@ -217,20 +236,20 @@ class GithubChangelogGenerator
         	
             echo "Milestone No. " . print_r($milestonenumber,true) . ": ";
             $issues = $this->callGitHubApi(sprintf('repos/%s/%s/issues', $user, $repository),
-                        [
-                            'state' => 'closed',
-                            'milestone' =>$milestonenumber
-                        ]);
+                                                    [
+                                                        'state' => 'closed',
+                                                        'milestone' =>$milestonenumber
+                                                    ]);
             $dataIssue = array();
             foreach ($issues as $issue) 
             {
                 $type = $this->getTypeFromLabels($issue->labels);
                 
             	$dataIssue[$issue->number] = [
-                                           'issue_title' => $issue->title,
-                                           'issue_type'  => $type,
-                                           'issue_url'   => $issue->html_url
-                                       	  ];
+                                               'issue_title' => $issue->title,
+                                               'issue_type'  => $type,
+                                               'issue_url'   => $issue->html_url
+                                          	 ];
             }
             $dataMilestone[$milestonenumber] = $dataIssue;
             echo "Found ".count($dataIssue)." closed issue(s)". PHP_EOL;
@@ -247,23 +266,34 @@ class GithubChangelogGenerator
      */
     private function orderIssuesByTypeForMilestone($issues)
     {
-        $feature = array();
-        $bugfix = array();
+        $feature       = array();
+        $bugfix        = array();
+        $documentation = array();
+        $maintenance   = array();
+        
         foreach ($issues as $issues_number => $values) 
         {
-        	if ($values['issue_type'] == $this::LABEL_TYPE_FEATURE) 
-        	{
-        		$feature[] = array('title'=>$values['issue_title'], 'number'=>$issues_number, 'html_url'=>$values['issue_url']);
-        	}
-        	if ($values['issue_type'] == $this::LABEL_TYPE_BUG)
-        	{
-        	    $bugfix[] = array('title'=>$values['issue_title'], 'number'=>$issues_number, 'html_url'=>$values['issue_url']);
-        	}
-        	 
+            switch ($values['issue_type']) 
+            {
+            	case $this::LABEL_TYPE_BUG :
+            	    $bugfix[] = array('title'=>$values['issue_title'], 'number'=>$issues_number, 'html_url'=>$values['issue_url']);
+            	    break;
+        	    case $this::LABEL_TYPE_FEATURE :
+        	        $feature[] = array('title'=>$values['issue_title'], 'number'=>$issues_number, 'html_url'=>$values['issue_url']);
+        	        break;
+    	        case $this::LABEL_TYPE_DOC :
+    	            $documentation[] = array('title'=>$values['issue_title'], 'number'=>$issues_number, 'html_url'=>$values['issue_url']);
+    	            break;
+	            case $this::LABEL_TYPE_MAINTENANCE :
+	                $maintenance[] = array('title'=>$values['issue_title'], 'number'=>$issues_number, 'html_url'=>$values['issue_url']);
+	                break;
+            }
         }
         
         return array($this::LABEL_TYPE_FEATURE=>$feature,
-                     $this::LABEL_TYPE_BUG=>$bugfix
+                     $this::LABEL_TYPE_BUG=>$bugfix,
+                     $this::LABEL_TYPE_DOC=>$documentation,
+                     $this::LABEL_TYPE_MAINTENANCE=>$maintenance
                     );
     }
     
@@ -283,9 +313,21 @@ class GithubChangelogGenerator
             }
             switch ($type)
             {
-                case $this::LABEL_TYPE_BUG: fwrite($fileStream, '### Fixed bugs' . PHP_EOL . PHP_EOL); break;
-                case $this::LABEL_TYPE_FEATURE: fwrite($fileStream, '### New features' . PHP_EOL . PHP_EOL); break;
-                case $this::LABEL_TYPE_PR: fwrite($fileStream, '### Merged pull requests' . PHP_EOL . PHP_EOL); break;
+                case $this::LABEL_TYPE_BUG : 
+                    fwrite($fileStream, '### Fixed bugs' . PHP_EOL . PHP_EOL); 
+                    break;
+                case $this::LABEL_TYPE_FEATURE : 
+                    fwrite($fileStream, '### New features' . PHP_EOL . PHP_EOL); 
+                    break;
+                case $this::LABEL_TYPE_DOC : 
+                    fwrite($fileStream, '### Documentation improvements' . PHP_EOL . PHP_EOL); 
+                    break;
+                case $this::LABEL_TYPE_MAINTENANCE :
+                    fwrite($fileStream, '### Maintenance case' . PHP_EOL . PHP_EOL);
+                    break;
+                case $this::LABEL_TYPE_PR : 
+                    fwrite($fileStream, '### Merged pull requests' . PHP_EOL . PHP_EOL); 
+                    break;
             }
 
             foreach ($currentIssues as $issue) 
@@ -348,9 +390,13 @@ class GithubChangelogGenerator
     private function getTypeFromLabel($label, $haystack = null)
     {
         $haystack = !$haystack ? $this->issueLabelMapping : $haystack;
-        foreach($haystack as $key => $value) {
+        foreach($haystack as $key => $value) 
+        {
             $current_key = $key;
-            if((is_array($value) && $this->getTypeFromLabel($label, $value) !== false) || (!is_array($value) && strcasecmp($label, $value) === 0)) {
+            if ( (is_array($value) && $this->getTypeFromLabel($label, $value) !== false) || 
+                 (!is_array($value) && strcasecmp($label, $value) === 0)
+               ) 
+            {
                 return $current_key;
             }
         }
@@ -376,10 +422,10 @@ class GithubChangelogGenerator
         );
 
         $options  = [
-            'http' => [
-                'user_agent' => 'bb_github_changelog_generator'
-            ]
-        ];
+                    'http' => [
+                                'user_agent' => 'bb_github_changelog_generator'
+                              ]
+                    ];
 
         $url = sprintf('https://api.github.com/%s?%s', $call, http_build_query($params));
 
