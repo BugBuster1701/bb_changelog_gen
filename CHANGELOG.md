@@ -4,7 +4,6 @@
 
 ### New features
 
-- [\#19](https://github.com/BugBuster1701/bb_changelog_gen/issues/19) Hint: sudo in install.sh
 - [\#18](https://github.com/BugBuster1701/bb_changelog_gen/issues/18) Translate install.sh messages
 - [\#17](https://github.com/BugBuster1701/bb_changelog_gen/issues/17) Add uninstall.sh
 - [\#16](https://github.com/BugBuster1701/bb_changelog_gen/issues/16) New Label Mapping Type: Maintenance
@@ -18,6 +17,7 @@
 
 - [\#22](https://github.com/BugBuster1701/bb_changelog_gen/issues/22) Documentation new features
 - [\#21](https://github.com/BugBuster1701/bb_changelog_gen/issues/21) Hint: Needs allow_url_fopen = On
+- [\#19](https://github.com/BugBuster1701/bb_changelog_gen/issues/19) Hint: sudo in install.sh
 
 ### Maintenance case
 
