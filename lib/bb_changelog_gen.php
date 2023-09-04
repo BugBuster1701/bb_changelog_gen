@@ -416,24 +416,29 @@ class GithubChangelogGenerator
         $params = array_merge(
             $params,
             [
-                'access_token' => $this->token,
                 'page' => $page
             ]
         );
 
         $options  = [
                     'http' => [
-                                'user_agent' => 'bb_github_changelog_generator'
-                              ]
-                    ];
+                        'method' => 'GET',
+                        'header' => [
+                                'User-Agent: PHP',
+                                'Content-type: application/x-www-form-urlencoded',
+                                'Authorization: Bearer '.$this->token,
+                                'X-GitHub-Api-Version: 2022-11-28'
+                        ]
+                    ]
+                ];
 
         $url = sprintf('https://api.github.com/%s?%s', $call, http_build_query($params));
 
         $context  = stream_context_create($options);
-        $response = @file_get_contents($url, null, $context);
+        $response = @file_get_contents($url, false, $context);
         if ($response === false) 
         {
-        	echo 'HTTP 404 Not Found.'. PHP_EOL .'Are username and repository correctly specified?'. PHP_EOL . PHP_EOL;
+        	echo 'HTTP 404 Not Found. '. PHP_EOL .'Are username and repository correctly specified?'. PHP_EOL . PHP_EOL;
         	exit(404);
         }
         $response = $response ? json_decode($response) : [];
