@@ -1,5 +1,11 @@
 # BugBuster's GitHub Changelog Generator
 
+## [Version 1.2.1](https://github.com/BugBuster1701/bb_changelog_gen/issues?q=milestone%3A%22Version+1.2.1%22+is%3Aclosed) (2023-09-04)
+
+### Fixed bugs
+
+- [\#25](https://github.com/BugBuster1701/bb_changelog_gen/issues/25) Anpassung Authentifizieren
+
 ## [Version 1.2.0](https://github.com/BugBuster1701/bb_changelog_gen/issues?q=milestone%3A%22Version+1.2.0%22+is%3Aclosed) (2015-11-08)
 
 ### New features
